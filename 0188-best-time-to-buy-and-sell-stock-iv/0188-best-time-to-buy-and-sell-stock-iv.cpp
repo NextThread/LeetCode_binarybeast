@@ -21,6 +21,8 @@ public:
       }
       return profit;
     }
+  
+  
     int ftabu(int k, vector<int>prices, int n){
     vector<vector<int>> buy(k + 1,vector<int>(n + 1, -1000000000));
     vector<vector<int>> sell(k + 1,vector<int>(n + 1, 0));
@@ -35,9 +37,11 @@ public:
     
     return sell[k][n];
    }
+  
+  
     int maxProfit(int k, vector<int>& prices) {
-      // vector<vector<int>>dp(prices.size(), vector<int>(2*k, -1));
+      // vector<vector<int>>dp(prices.size(), vector<int>(2*k, -1)); // this is for memoization, but memo giving tle
         // return f(0, 0, k, prices, dp);
-        return ftabu(k, prices, prices.size());
+        return ftabu(k, prices, prices.size()); // we are using tabulation
     }
 };
