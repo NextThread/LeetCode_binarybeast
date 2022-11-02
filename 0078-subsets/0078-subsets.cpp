@@ -3,9 +3,9 @@ public:
     vector<vector<int>> ans;
     void sub(vector<int> &nums, int ind, vector<int> temp)
     {
-        if(ind == nums.size())
+        if(ind == nums.size())  // base case : if we reach end of the array
         {
-            ans.push_back(temp);
+            ans.push_back(temp); // push it into the resultant array
             return;
         }
         sub(nums, ind+1, temp);
