@@ -1,4 +1,12 @@
-struct TrieNode {
+/*  
+Steps--->
+1.   Do backtracking to try all possible paths in the board.
+2.   To check if the current path exists any word, we can build Trie
+3.   Rest is Trie implementation
+
+*/
+
+struct TrieNode {   // Implementation of Trie Data Structure
     TrieNode* children[26] = {};
     string* word;
     void addWord(string& word) {
@@ -24,9 +32,10 @@ public:
         
         for (int r = 0; r < m; ++r)
             for (int c = 0; c < n; ++c)
-                dfs(board, r, c, &trieNode);
+                dfs(board, r, c, &trieNode); // for every char, call dfs
         return ans;
     }
+  
     void dfs(vector<vector<char>>& board, int r, int c, TrieNode* cur) {
         if (r < 0 || r == m || c < 0 || c == n || board[r][c] == '#' || cur->children[board[r][c]-'a'] == NULL) return;
         char orgChar = board[r][c];
