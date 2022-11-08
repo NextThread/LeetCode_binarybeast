@@ -3,7 +3,6 @@ public:
   
     int reverse(int n)
     {
-      int temp = n;
       int rev = 0;
       while(n)
       {
