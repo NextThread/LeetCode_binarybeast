@@ -7,19 +7,14 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-         // if root equals to p or q return it
-         // left = recursive call for left
-         // right = recursive call for right
-         // if both are ok return
-         // if any one becomes NULL return NULL
-         // if left return it else return right
+
  class Solution {
  public:
      TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if(!root) return NULL;
-        if(root == p || root == q) return root;
-        TreeNode* left = lowestCommonAncestor(root->left, p, q);
-        TreeNode* right = lowestCommonAncestor(root->right, p, q);
+        if(!root) return NULL; // base case : if root is NULL
+        if(root == p || root == q) return root; // base case : if root is equal to p or q
+        TreeNode* left = lowestCommonAncestor(root->left, p, q); // recursive call for left
+        TreeNode* right = lowestCommonAncestor(root->right, p, q); // recursive call for right
         if(right && left) return root;
         if(!right && !left) return NULL;
         return left?left:right;
