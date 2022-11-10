@@ -21,6 +21,9 @@ public:
     }
   
     int minDistance(string word1, string word2) {
+      
+      //  Commented part is for Tabulation, else the problem has been solved using memoization.
+      
         // int m = word1.size() , n = word2.size();
         // vector<vector<int>>dp(m+1,vector<int>(n+1,0));
         // for(int i = 1 ; i <= m ; i++) dp[i][0] = i;
