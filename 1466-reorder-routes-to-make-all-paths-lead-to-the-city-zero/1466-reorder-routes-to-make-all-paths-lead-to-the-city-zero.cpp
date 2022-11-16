@@ -17,8 +17,8 @@ public:
         // for every city store the adjacent city along with direction 
         // to store the direction we use positive indicating a road from a to b for a
         // we use negative indicating there is a road from b to a for a
-        vector<vector<int>> adjCities(n);
-        vector<bool> visited(n,false);
+        vector<vector<int>> adjCities(n); // to make the adjacency list
+        vector<bool> visited(n,false); // to track of visited nodes
         for(int i = 0 ; i < connections.size() ; i++)
         {
             int city1 = connections[i][0];
@@ -26,8 +26,8 @@ public:
             adjCities[city1].push_back(city2);
             adjCities[city2].push_back(-city1);
         }
-        //start dfs from city  0 
-        //when ever you found a positive then it need to be reversed
+        // start dfs from city  0 
+        // whenever you found a positive then it need to be reversed
         int count = 0;
         reorderPaths(0, adjCities, count, visited);
         return count;
