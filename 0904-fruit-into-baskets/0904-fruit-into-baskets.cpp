@@ -7,10 +7,11 @@ public:
       int slow = 0, fast = 0;
       for(fast = 0 ; fast < fruits.size() ; fast++)
       {
-        mp[fruits[fast]]++;
+        mp[fruits[fast]]++; // store the frequency of the food
         if(mp.size() > 2) // size exceeded of 2
         {
-          if(--mp[fruits[slow]] == 0) mp.erase(fruits[slow]);
+          if(--mp[fruits[slow]] == 0) mp.erase(fruits[slow]); // if we are having single frequencty food,
+          // then remove it from the map, because it's of no use
           slow++;
         }
       }
