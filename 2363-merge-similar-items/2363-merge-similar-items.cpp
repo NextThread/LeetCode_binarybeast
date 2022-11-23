@@ -1,7 +1,18 @@
 class Solution {
 public:
     vector<vector<int>> mergeSimilarItems(vector<vector<int>>& items1, vector<vector<int>>& items2) {
-   map<int, int>mp;
+      
+      
+      // intuition
+      
+      // first store the 1st array in a map
+      // next time while iterating on the second array
+      // check if the item is already there in the map, if it is,
+      // then increase its count, else push in the map as a new element
+      // lastly in a 2d vector, insert the element with their values from the map
+      // return the 2d vector
+      
+      map<int, int>mp;
       for(int i = 0 ; i < items1.size() ; i++)
       {
         mp[items1[i][0]] = items1[i][1];
