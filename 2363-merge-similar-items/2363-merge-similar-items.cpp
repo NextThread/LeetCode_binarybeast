@@ -11,7 +11,10 @@ public:
         if(mp.find(items2[i][0]) != mp.end()) mp[items2[i][0]] += items2[i][1];
         else mp[items2[i][0]] = items2[i][1];
       }
-    for(auto it : mp) cout<<it.first<<" "<<it.second<<endl;
+      
+    // for debugging 
+    // for(auto it : mp) cout<<it.first<<" "<<it.second<<endl;
+      
       vector<vector<int>> res;
       for(auto it : mp)
       {
