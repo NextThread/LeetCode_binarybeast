@@ -1,17 +1,12 @@
 class Solution {
 public:
-           int sumSubarrayMins(vector<int>& A) {
-        
+        int sumSubarrayMins(vector<int>& A) {
         int n = A.size();
         int MOD = 1e9 + 7;
         vector<int> left(n), right(n);
-        
-        // for every i find the Next smaller element to left and right
-        
-        // Left
         stack<int>st;
         st.push(0);
-        left[0] = 1; // distance = 1, left not found, this is distance multiplied with num, so it can't be zero
+        left[0] = 1;
         for(int i=1; i<n; i++)
         {
             while(!st.empty() && A[i] < A[st.top()]) 
