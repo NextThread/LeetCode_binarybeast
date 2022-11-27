@@ -6,7 +6,8 @@ public:
         for (int i = 1; i < nums.size(); i++) {
             for (int j = 0; j < i; j++) {
                 long long diff = (long long int)nums[i] - nums[j];
-                int cnt = dp[j].count(diff) ? dp[j][diff] : 0;
+                int cnt = 0;
+                if(dp[j].count(diff)) cnt = dp[j][diff];
                 dp[i][diff] += cnt + 1;
                 ans += cnt;
             }
