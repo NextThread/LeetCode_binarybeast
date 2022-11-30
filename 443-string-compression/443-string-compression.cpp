@@ -3,7 +3,7 @@ public:
     int compress(vector<char>& chars) {
     int cnt = 1;
     string res;
-    for(int i=0;i<chars.size();i++)
+    for(int i = 0 ; i < chars.size() ; i++)
     {
         while(i<chars.size()-1 && chars[i+1] == chars[i])
         {
