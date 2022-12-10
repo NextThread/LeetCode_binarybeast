@@ -19,8 +19,8 @@ public:
         return currSum;
     }
     int maxProduct(TreeNode* root) {
-        totalSum = dfs(root); // Firstly, get total sum of all nodes in the Binary Tree
-        dfs(root); // Then dfs in post order to calculate sum of each subtree and its complement
-        return ans % int(1e9+7);
+        totalSum = dfs(root); // sum up all the nodes using dfs
+        dfs(root); // look for it's compliment and update it
+        return ans%(long long)(1e9+7);
     }
 };
