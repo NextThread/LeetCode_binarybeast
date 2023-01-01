@@ -14,7 +14,7 @@ public:
             }
         }
         b.push_back(temp);
-        int time = 5;
+        int time = 1;
         while(time--)
         {
             map<char, int>mp1;
