@@ -14,20 +14,16 @@ public:
             }
         }
         b.push_back(temp);
-        int time = 1;
-        while(time--)
-        {
-            map<char, int>mp1;
-            map<string, int>mp2;
-            for(char ch : pattern) mp1[ch]++;
-            string n, m;
-            for(string st : b) mp2[st]++;
-            for(auto it : pattern) n += mp1[it];
-            for(auto it : b) m += mp2[it];
-            if(n != m) return false;
-            n = "";
-            m = "";
-        }
+        map<char, int>mp1;
+        map<string, int>mp2;
+        for(char ch : pattern) mp1[ch]++;
+        string n, m;
+        for(string st : b) mp2[st]++;
+        for(auto it : pattern) n += mp1[it];
+        for(auto it : b) m += mp2[it];
+        if(n != m) return false;
+        n = "";
+        m = "";
         string last1, last2;
         for(int i = 1 ; i < pattern.size() ; i++) 
         {
