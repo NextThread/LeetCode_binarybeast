@@ -2,14 +2,10 @@ class Solution {
 public:
     int f(int i, int j, string &s, string &t, vector<vector<int>> &dp)
     {
-        if (i == s.length())
-            return t.length() - j;
-        if (j == t.length())
-            return s.length() - i;
-        if (dp[i][j] != -1)
-            return dp[i][j];
-        if (s[i] == t[j])
-            return f(i + 1, j + 1, s, t, dp);
+        if (i == s.length()) return t.length() - j;
+        if (j == t.length()) return s.length() - i;
+        if (dp[i][j] != -1) return dp[i][j];
+        if (s[i] == t[j]) return f(i + 1, j + 1, s, t, dp);
         else
         {
             int op1 = 1 + f(i + 1, j + 1, s, t, dp);
