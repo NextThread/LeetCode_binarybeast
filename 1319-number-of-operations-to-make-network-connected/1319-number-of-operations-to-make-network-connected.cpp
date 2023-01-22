@@ -5,12 +5,8 @@ public:
     {
         vis[i] = true;
         for(int it : adj[i])
-        {
             if(!vis[it])
-            {
                 dfs(it, vis, adj);
-            }
-        }
     }
     
     int makeConnected(int n, vector<vector<int>>& c) {
