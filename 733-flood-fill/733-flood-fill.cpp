@@ -1,19 +1,20 @@
 class Solution {
 public:
-    void dfs(vector<vector<int>>& image, int sr, int sc, int oldcolor, int newcolor)
+    
+    void f(vector<vector<int>>& image, int i, int j, int old, int color)
     {
-        // Base Case : if goes out of boundary or not equal to the oldColor
-        if(sr < 0 || sc < 0 || sr >= image.size() || sc >= image[0].size() || image[sr][sc] != oldcolor) return;
-        image[sr][sc] = newcolor; // apply the new color & call dfs for all 4 directions
-        dfs(image, sr+1, sc, oldcolor, newcolor);
-        dfs(image, sr-1, sc, oldcolor, newcolor);
-        dfs(image, sr, sc+1, oldcolor, newcolor);
-        dfs(image, sr, sc-1, oldcolor, newcolor);
+        if(i < 0 or j < 0 or i >= image.size() or j >= image[0].size() or image[i][j] != old) return;
+        image[i][j] = color;
+        f(image, i+1, j, old, color);
+        f(image, i, j+1, old, color);
+        f(image, i-1, j, old, color);
+        f(image, i, j-1, old, color);
     }
     
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+        int old = image[sr][sc];
         if(image[sr][sc] != color)
-          dfs(image, sr, sc, image[sr][sc], color);
+            f(image, sr, sc, old, color);
         return image;
     }
 };
