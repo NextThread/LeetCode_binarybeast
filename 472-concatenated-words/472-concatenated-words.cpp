@@ -1,19 +1,19 @@
 class Solution {
 public:
-     bool check(string word, unordered_set<string>& dict, unordered_map<string, bool> &memo){
-        if(memo.find(word) !=  memo.end()) return memo[word];
+     bool check(string word, unordered_set<string>& dict, unordered_map<string, bool> &ump){
+        if(ump.find(word) !=  ump.end()) return ump[word];
         for(int i = 1 ; i < word.size() ; ++i) {
             string substring = word.substr(0, i); // check for every substring
             if(dict.count(substring)) { // if substring is pre-stored
                 string nextpart = word.substr(i); // the rest substring
-                if(dict.count(nextpart) || check(nextpart, dict, memo)) // check if the next substring is been there in our map already or using the next part we can do the same operation(recursive call) and is possible
+                if(dict.count(nextpart) || check(nextpart, dict, ump)) // check if the next substring is been there in our map already or using the next part we can do the same operation(recursive call) and is possible
                 {
-                    memo.insert({word, true});
+                    ump.insert({word, true});
                     return true;
                 }
             }
         }
-       memo.insert({word, false});
+       ump.insert({word, false});
        return false;
     }
     
