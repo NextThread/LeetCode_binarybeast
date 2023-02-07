@@ -4,7 +4,7 @@ public:
         unordered_map<int,int>mp;
         int i = 0, j = 0, res = 0;
         while(j < fruits.size()) {
-            mp[fruits[j]]+=1;
+            mp[fruits[j]] += 1;
             while(mp.size() > 2) {
                 if(mp[fruits[i]] == 1) mp.erase(fruits[i]);
                 else mp[fruits[i]] -= 1;
