@@ -1,7 +1,8 @@
 class Solution {
-public:
+private:
     int vis[51][51];
     int cnt = 0;
+public:
     void dfs(int i, int j, vector<vector<int>> &grid)
     {
         if(i < 0 or j < 0 or i >= grid.size() or j >= grid[0].size() or vis[i][j] == 1 or grid[i][j] == 0) return;
