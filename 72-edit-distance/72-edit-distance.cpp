@@ -1,22 +1,25 @@
 class Solution {
 public:
-    int f(int i, int j, string &s, string &t, vector<vector<int>> &dp)
+    int dp[501][501];
+    int f(int i, int j, string a, string b)
     {
-        if (i == s.length()) return t.length() - j;
-        if (j == t.length()) return s.length() - i;
-        if (dp[i][j] != -1) return dp[i][j];
-        if (s[i] == t[j]) return f(i + 1, j + 1, s, t, dp);
-        else
+        if(i >= a.length()) return b.length()-j;
+        if(j >= b.length()) return a.length()-i;
+        if(dp[i][j] != -1) return dp[i][j];
+        if(a[i] == b[j])
         {
-            int op1 = 1 + f(i + 1, j + 1, s, t, dp);
-            int op2 = 1 + f(i + 1, j, s, t, dp);
-            int op3 = 1 + f(i, j + 1, s, t, dp);
-            return dp[i][j] = min(op1, min(op2, op3));
+            return dp[i][j] = f(i+1, j+1, a, b);
+        }
+        else{
+            int op1 = f(i+1, j, a, b)+1;
+            int op2 = f(i, j+1, a, b)+1;
+            int op3 = f(i+1, j+1, a, b)+1;
+            return dp[i][j] = min({op1, op2, op3});
         }
     }
     
     int minDistance(string word1, string word2) {
-        vector<vector<int>> dp(word1.length()+1, vector<int>(word2.length()+1, -1));
-        return f(0, 0, word1, word2, dp);
+        memset(dp, -1, sizeof(dp));
+        return f(0, 0, word1, word2);
     }
 };
