@@ -19,7 +19,14 @@ public:
     }
     
     int minDistance(string word1, string word2) {
-        memset(dp, -1, sizeof(dp));
+        // memset(dp, -1, sizeof(dp));
+        for(int i = 0 ; i < 501 ; i++)
+        {
+            for(int j = 0 ; j < 501 ; j++)
+            {
+                dp[i][j] = -1;
+            }
+        }
         return f(0, 0, word1, word2);
     }
 };
