@@ -5,8 +5,8 @@ public:
         while(i < matrix.size() and j >= 0)
         {
             if(matrix[i][j] == target) return true;
-            else if(matrix[i][j] < target) i++;
-            else j--;
+            else if(matrix[i][j] > target) j--;
+            else i++;
         }
         return false;
     }
