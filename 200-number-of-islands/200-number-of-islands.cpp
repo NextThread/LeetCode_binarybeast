@@ -1,10 +1,9 @@
 class Solution {
 public:
-    
     void dfs(int i, int j, vector<vector<char>>& grid)
     {
         if(i < 0 or j < 0 or i >= grid.size() or j >= grid[0].size() or grid[i][j] == '0') return;
-        grid[i][j] = '0';
+        grid[i][j] = '0'; //  make it water, and then move
         dfs(i+1, j, grid);
         dfs(i, j+1, grid);
         dfs(i-1, j, grid);
