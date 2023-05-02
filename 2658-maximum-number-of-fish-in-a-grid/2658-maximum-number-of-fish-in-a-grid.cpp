@@ -11,7 +11,7 @@ public:
         vector<vector<bool>> vis(m, vector<bool>(n));
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
-                if (grid[i][j] && !vis[i][j]) result = max(result, dfs(grid, vis, i, j));
+                if (grid[i][j]) result = max(result, dfs(grid, vis, i, j));
             }
         }
         return result;
