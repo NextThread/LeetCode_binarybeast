@@ -1,22 +1,22 @@
 class Solution {
 public:
-    int countRangeSum(vector<int>& nums, int lower, int upper) {
-        int cnt = 0;
-        int n = nums.size();
-        if(upper == 87456 and lower == -5733) return 159986170;
-        if(lower == -7599) return 202935140;
-        if(lower == -64687 and upper == 22400) return 0;
-        if(lower == -16656 and upper == -9925) return 0;
-        if(lower == -82832 and upper == -12044) return 0;
-        if(lower == -26287 and upper == 1451) return 0;
-        for(int i = 0 ; i < n ; i++) {
-            long long int sum = nums[i];
-            cnt += (sum >= lower and sum <= upper);
-            for(int j = i+1 ; j < n ; j++) {
-                sum += nums[j];
-                cnt += (sum >= lower and sum <= upper);
-            }
+    int f(vector<long>& sum, int lower, int upper, int low, int high) {
+        if(high - low <= 1) return 0;
+        int mid = (low+high) >> 1;
+        int m = mid, n = mid, count =0;
+        count = f(sum, lower, upper, low, mid) + f(sum, lower, upper, mid, high);
+        for(int i = low ; i < mid ; i++) {
+            while(m < high && sum[m] - sum[i] < lower) m++;
+            while(n < high && sum[n] - sum[i] <= upper) n++;
+            count += n - m;
         }
-        return cnt;
+        inplace_merge(sum.begin()+low, sum.begin()+mid, sum.begin()+high);
+        return count;
+    }
+
+    int countRangeSum(vector<int>& nums, int lower, int upper) {
+        vector<long int> sum(nums.size() + 1, 0);
+        for(int i = 0 ; i < nums.size() ; i++) sum[i+1] = sum[i]+nums[i];
+        return f(sum, lower, upper, 0, nums.size()+1);
     }
 };
