@@ -10,7 +10,6 @@ public:
                 cnt = 1;
             }
         }
-        mx = max(mx, cnt);
-        return mx;
+        return max(mx, cnt);
     }
 };
