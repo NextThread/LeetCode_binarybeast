@@ -10,7 +10,15 @@ public:
     }
     
     int rob(vector<int>& nums) {
-        memset(dp, -1, sizeof(dp));
-       return f(0, nums); 
+        // memset(dp, -1, sizeof(dp));
+       // return f(0, nums); 
+        dp[0] = nums[0];
+        if(nums.size() == 1) return dp[0];
+        dp[1] = max(nums[0], nums[1]);
+        if(nums.size() == 2) return dp[1];
+        for(int i = 2 ; i < nums.size() ; i++) {
+            dp[i] = max(dp[i-1], dp[i-2] + nums[i]);
+        }
+        return dp[nums.size()-1];
     }
 };
