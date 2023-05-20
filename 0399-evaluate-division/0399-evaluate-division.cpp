@@ -5,7 +5,7 @@ class Solution {
     double queryAns;
 
     bool dfs(string startNode, string endNode, double runningProduct) {
-        if(startNode == endNode and adjList.find(startNode)!=adjList.end()) {
+        if(startNode == endNode and adjList.find(startNode) != adjList.end()) {
             queryAns = runningProduct;
             return true;
         }
@@ -28,7 +28,7 @@ class Solution {
         
         int n = equations.size(), m = queries.size();
         vector<double> ans(m);
-        
+        // build the adjacency list and mark their positions as not visited
         for(int i = 0; i < n ; i++) {
             adjList[equations[i][0]].push_back({equations[i][1], values[i]});
             adjList[equations[i][1]].push_back({equations[i][0], 1/values[i]});
@@ -38,9 +38,9 @@ class Solution {
         
         for(int i = 0; i < m ; i++) {
             queryAns = 1;
-            bool pathFound = dfs(queries[i][0], queries[i][1], 1);            
-            if(pathFound) ans[i] = queryAns;
-            else ans[i] = -1;
+            bool pathFound = dfs(queries[i][0], queries[i][1], 1);  // check for path   
+            if(pathFound) ans[i] = queryAns; // if have a path insert it in ans
+            else ans[i] = -1; // else mark it as -1
         }
         
         return ans;
