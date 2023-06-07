@@ -1,7 +1,7 @@
 class Solution {
 public:
     
-    int dp[1000]; // 
+    int dp[100000]; // 
     
     int rec(int i, vector<int>& cost) {
         //1st step: base case
