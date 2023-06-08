@@ -11,13 +11,13 @@ public:
 	// largest elements
 	int print2largest(int arr[], int n) {
 	    
-	   int mx = -100000;
+	   int mx = INT_MIN;
 	   
 	   for(int i = 0 ; i < n ; i++) {
 	       mx = max(mx, arr[i]);
 	   }
 	   
-	   int mx2 = -100000;
+	   int mx2 = INT_MIN;
 	   
 	   for(int i = 0 ; i < n ; i++) {
 	       if(arr[i] != mx) {
@@ -25,7 +25,7 @@ public:
 	       }
 	   }
 	   
-	   if(mx2 == -100000) return -1;
+	   if(mx2 == INT_MIN) return -1;
 	   
 	   return mx2;
 	}
