@@ -6,6 +6,8 @@ using namespace std;
 class Solution {
   public:
 
+
+      // levelwise traversal, if we reach any node twice via two different paths, that measn cycle is present
      bool dfs(int v, vector<int> adj[],vector<bool>&vis,int parent){
          vis[v] = 1;
         for(int neighbour:adj[v]) {
@@ -27,6 +29,7 @@ class Solution {
         }
         return false;
     }
+   
 };
 
 
