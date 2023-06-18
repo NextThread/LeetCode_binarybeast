@@ -20,14 +20,19 @@ int main()
 string firstRepChar(string s)
 {
     string res = "";
-    set<char> st;
+    
+    map<char, int> mp;
+    
     for(int i = 0 ; i < s.size() ; i++) {
-        if(st.find(s[i]) != st.end()) { // present already in our set
+        
+        mp[s[i]]++;
+        
+        if(mp[s[i]] == 2) { // repeating
             res += s[i];
             return res;
         }
-        st.insert(s[i]);
+        
     }
-    
+    // cout << res << ' ';
     return "-1";
 }
