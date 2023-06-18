@@ -19,15 +19,15 @@ int main()
 
 string firstRepChar(string s)
 {
-    map<char, int> mp;
-    string res = "-1";
+    string res = "";
+    set<char> st;
     for(int i = 0 ; i < s.size() ; i++) {
-          mp[s[i]]++;
-        if(mp[s[i]] > 1) {
-            res = s[i];
+        if(st.find(s[i]) != st.end()) { // present already in our set
+            res += s[i];
             return res;
         }
+        st.insert(s[i]);
     }
-    return res;
     
+    return "-1";
 }
