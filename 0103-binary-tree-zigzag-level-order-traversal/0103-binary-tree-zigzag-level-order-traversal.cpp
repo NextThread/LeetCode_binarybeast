@@ -12,6 +12,8 @@
 class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+        // same as level order, just include a variable
+        // to change direction at each level
        vector<vector<int>> res;
         bool ltr = true;
         if(!root) return res;
