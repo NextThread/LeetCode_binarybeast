@@ -6,13 +6,13 @@ public:
         int n = A.length();
         int l = 0, r = n-1;
         
-        while(l < n && A[l] == B[l])
+        while(l < n && A[l] == B[l]) // find the index from left where mismatched
             l++;
-        while(r >= 0 && A[r] == B[r])
+        while(r >= 0 && A[r] == B[r]) // find the index from right where mismatched
             r--;
         if(l < r)
-            swap(A[l], A[r]);
+            swap(A[l], A[r]); // swap
         
-        return A == B; 
+        return A == B; // check equal
     }
 };
