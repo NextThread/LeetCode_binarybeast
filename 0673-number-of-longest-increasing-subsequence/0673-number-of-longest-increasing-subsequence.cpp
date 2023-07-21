@@ -1,42 +1,25 @@
 class Solution {
 public:
-    pair<int,int> gmax;
-    pair<int,int> helper(const vector<int>& nums, int idx, vector<pair<int,int>>& dp) {
-        if (dp[idx].first == -1 && dp[idx].second == -1) {
-            pair<int,int> longestlenandcount = {0, 1};
-
-            for (int i=idx+1; i<nums.size();++i){
-                if (nums[i] > nums[idx]) {
-                    auto res = helper(nums, i, dp);
-                    if (res.first > longestlenandcount.first) {
-                        longestlenandcount = res;
-                    } else if (res.first == longestlenandcount.first) {
-                        longestlenandcount.second += res.second;
+    int findNumberOfLIS(vector<int>& nums) {
+        int n = nums.size(), maxlen = 1, ans = 0;
+        vector<int> cnt(n, 1), len(n, 1);
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[i] > nums[j]) {
+                    if (len[j]+1 > len[i]) {
+                        len[i] = len[j]+1;
+                        cnt[i] = cnt[j];
                     }
+                    else if (len[j]+1 == len[i]) 
+                        cnt[i] += cnt[j];
                 }
             }
- 
-            longestlenandcount.first++;
-            dp[idx] = longestlenandcount;
+            maxlen = max(maxlen, len[i]);
         }
-
-        if (gmax.first < dp[idx].first) {
-            gmax = dp[idx];
-        } else if (gmax.first == dp[idx].first) {
-            gmax.second += dp[idx].second;
-        }
-
-        return dp[idx];
-    }
-
-    int findNumberOfLIS(vector<int>& nums) {
-        vector<pair<int,int>> dp(nums.size(), {-1, -1});
-        gmax = {0, 1};
-
-        for (int i=0;i<nums.size();++i){
-            helper(nums, i, dp);
-        }
-
-        return gmax.second;
+        // find the longest increasing subsequence of the whole sequence
+       // sum valid counts
+        for (int i = 0; i < n; i++) 
+            if (len[i] == maxlen) ans += cnt[i];
+        return ans;
     }
 };
