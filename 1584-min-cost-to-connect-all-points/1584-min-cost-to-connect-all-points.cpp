@@ -10,7 +10,9 @@ public:
             if (min_d[j] != INT_MAX) 
             {
                 min_d[j] = min(min_d[j], abs(ps[i][0] - ps[j][0]) + abs(ps[i][1] - ps[j][1]));
-                curr = min_d[j] < min_d[curr] ? j : curr;
+                if(min_d[j] < min_d[curr]) {
+                    curr = j;
+                }
             }
         res += min_d[curr]; // res k saath wahi minimum distance add karo
         i = curr; // i ko abhi k current node pe set krdo
