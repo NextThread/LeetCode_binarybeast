@@ -7,7 +7,6 @@ class Solution {
   public:
     long long int count(int coins[], int N, int sum) {
 
-        // code here.
           vector<vector<long long int>> dp(N, vector<long long int>(sum + 1, 0));
         vector<long long int> prev(sum + 1, 0), cur(sum + 1, 0);
 
