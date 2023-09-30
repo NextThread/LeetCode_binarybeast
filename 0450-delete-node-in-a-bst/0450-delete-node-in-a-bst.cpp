@@ -33,6 +33,7 @@ public:
             if(par -> left == iter) par -> left = iter -> right;          
             else par -> right = iter -> right;
         }
+        delete iter;
         return root;
     }
 };
