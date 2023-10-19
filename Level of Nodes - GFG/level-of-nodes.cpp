@@ -8,7 +8,7 @@ class Solution
 {
 	public:
 	//Function to find the level of node X.
-int nodeLevel(int n, vector<int> v[], int x) 
+	int nodeLevel(int n, vector<int> v[], int x) 
 	{
 	    vector<bool> vis(n, false);
 	    queue<pair<int, int>> q;
