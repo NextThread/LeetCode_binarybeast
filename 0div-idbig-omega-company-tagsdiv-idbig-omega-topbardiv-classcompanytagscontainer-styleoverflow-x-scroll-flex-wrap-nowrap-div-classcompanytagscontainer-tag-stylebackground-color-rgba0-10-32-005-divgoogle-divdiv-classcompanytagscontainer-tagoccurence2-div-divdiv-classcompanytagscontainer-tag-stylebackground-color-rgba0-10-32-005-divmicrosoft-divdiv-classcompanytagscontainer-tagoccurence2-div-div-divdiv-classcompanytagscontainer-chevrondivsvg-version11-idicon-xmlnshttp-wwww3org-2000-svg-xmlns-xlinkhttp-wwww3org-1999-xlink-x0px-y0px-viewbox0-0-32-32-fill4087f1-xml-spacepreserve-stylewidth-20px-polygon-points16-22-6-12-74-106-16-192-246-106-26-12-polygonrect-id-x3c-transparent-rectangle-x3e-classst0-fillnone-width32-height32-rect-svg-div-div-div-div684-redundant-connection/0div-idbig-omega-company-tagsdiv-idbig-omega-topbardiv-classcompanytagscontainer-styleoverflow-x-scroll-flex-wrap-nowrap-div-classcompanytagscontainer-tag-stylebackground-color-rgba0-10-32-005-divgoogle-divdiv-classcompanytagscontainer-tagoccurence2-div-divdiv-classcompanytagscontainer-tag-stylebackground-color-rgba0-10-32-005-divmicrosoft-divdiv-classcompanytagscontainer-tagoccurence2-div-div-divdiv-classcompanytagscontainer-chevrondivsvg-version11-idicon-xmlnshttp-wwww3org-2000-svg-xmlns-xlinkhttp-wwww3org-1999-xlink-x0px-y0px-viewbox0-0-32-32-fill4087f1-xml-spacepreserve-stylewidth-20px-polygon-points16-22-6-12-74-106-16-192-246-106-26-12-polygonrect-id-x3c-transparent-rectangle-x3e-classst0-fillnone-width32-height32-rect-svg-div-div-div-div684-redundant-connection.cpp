@@ -14,7 +14,12 @@ class DSU{
         auto xp = find(x);
         auto vp = find(v);
         if(xp == vp) return false;
-        return par[xp] = vp;
+        
+        if(rank[xp] > rank[vp]) par[vp] = par[xp];
+        else if(rank[vp] > rank[xp]) par[xp] = par[vp];
+        else par[xp] = vp, rank[vp]++;
+        return true;
+        // return par[xp] = vp;
     }
 };
 
