@@ -1,28 +1,34 @@
-class Solution {
-public:
-    
-    bool dfs(int node, int par, vector<vector<int>> &adj, vector<bool> &vis) {
-        vis[node] = true;
-        for(auto it : adj[node]) {
-            if(!vis[it]) {
-                if(dfs(it, node, adj, vis) == true) return true;
-            }
-            
-            else if(it != par) return true;
-        }
-        return false;
+class DSU{
+    vector<int> par, rank;
+    public:
+    DSU(int n): par(n), rank(n) {
+        iota(begin(par), end(par), 0);
     }
     
+    int find(int x) {
+        if(x == par[x]) return x;
+        return find(par[x]);
+    }
+    
+    bool Union(int x, int v) {
+        auto xp = find(x);
+        auto vp = find(v);
+        if(xp == vp) return false;
+        return par[xp] = vp;
+    }
+};
+
+class Solution {
+public:  
+    // union find o(n*n)
+    // path compression o(log(n))
+    // union by rank o(n)
+    
     vector<int> findRedundantConnection(vector<vector<int>>& edges) {
-        int n = edges.size();
-        vector<vector<int>> adj(n+1);
-        vector<bool> vis(n+1, false);
+        DSU ds(size(edges)+1);
         
         for(auto it : edges) {
-            fill(begin(vis), end(vis), 0);
-            adj[it[0]].push_back(it[1]);
-            adj[it[1]].push_back(it[0]);
-            if(dfs(it[0], -1, adj, vis) == true) return it;
+            if(!ds.Union(it[0], it[1])) return it;
         }
         return {};
     }
