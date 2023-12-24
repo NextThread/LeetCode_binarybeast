@@ -7,7 +7,7 @@ class DSU{
     
     int find(int x) {
         if(x == par[x]) return x;
-        return find(par[x]);
+        return par[x] = find(par[x]);
     }
     
     bool Union(int x, int v) {
