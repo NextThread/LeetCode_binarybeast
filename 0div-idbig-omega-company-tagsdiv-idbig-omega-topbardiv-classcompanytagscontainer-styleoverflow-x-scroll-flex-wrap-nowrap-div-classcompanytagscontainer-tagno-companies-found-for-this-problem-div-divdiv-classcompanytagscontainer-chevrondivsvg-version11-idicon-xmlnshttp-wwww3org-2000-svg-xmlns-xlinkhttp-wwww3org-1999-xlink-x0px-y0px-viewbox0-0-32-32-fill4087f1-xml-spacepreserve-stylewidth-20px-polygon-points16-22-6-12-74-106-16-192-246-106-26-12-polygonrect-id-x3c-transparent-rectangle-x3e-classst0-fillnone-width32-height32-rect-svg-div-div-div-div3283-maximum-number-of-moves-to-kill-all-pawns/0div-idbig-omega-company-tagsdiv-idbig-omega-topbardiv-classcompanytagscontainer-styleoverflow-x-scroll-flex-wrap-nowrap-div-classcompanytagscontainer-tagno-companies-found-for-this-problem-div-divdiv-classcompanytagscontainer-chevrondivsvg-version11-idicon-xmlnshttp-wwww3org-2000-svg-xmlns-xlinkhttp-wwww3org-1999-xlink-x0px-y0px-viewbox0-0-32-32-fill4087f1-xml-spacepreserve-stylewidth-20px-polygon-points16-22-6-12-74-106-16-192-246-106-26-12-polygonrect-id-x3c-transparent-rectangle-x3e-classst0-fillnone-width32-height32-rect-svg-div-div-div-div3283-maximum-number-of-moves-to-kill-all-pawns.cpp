@@ -30,7 +30,10 @@ void bfs(int startx, int starty) {
     }
 }
 
-void dist_cal() {
+
+class Solution {
+public:
+    void dist_cal() {
     static bool flag = false; 
     if(flag) return; 
     memset(dp, -1, sizeof(dp)); 
@@ -41,9 +44,6 @@ void dist_cal() {
     }
     flag = true; 
 }
-
-class Solution {
-public:
     vector<vector<int>> memo;
     int f(int curr, int mask, int turn, vector<vector<int>>& positions) {
         int n = positions.size();
